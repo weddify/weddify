@@ -8,8 +8,8 @@
 </script>
 
 <section
-	class="text-base-100 bg-base-200 relative mx-auto flex h-screen w-full max-w-md flex-col items-center justify-between px-6 py-12 text-center md:max-w-lg"
-	style="background-image: url('/weddify/static/16340656_v798-adj-28.jpg'); background-size: cover; background-position: center;"
+	class="text-base-100 bg-base-200 relative mx-auto flex h-[100dvh] w-full max-w-lg flex-col items-center justify-between px-6 py-12 text-center"
+	style="background-image: url('/16340656_v798-adj-28.jpg'); background-size: cover; background-position: center;"
 >
 	<div class="absolute inset-0 bg-black/40"></div>
 

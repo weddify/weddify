@@ -12,7 +12,7 @@
 		ungkapan kasih anda, anda bisa meberi kado secara cashless.
 	</p>
 
-	<div class="bg-base-100 border-base-300 collapse border text-center">
+	<div class="bg-base-100 border-base-300 collapse border text-center shadow-lg">
 		<input class="w-full" type="checkbox" />
 		<div class="collapse-title mx-auto pr-4 text-center font-semibold">Klik Disini</div>
 		<div class="collapse-content text-sm">
@@ -25,7 +25,7 @@
 						<span class="text-base text-gray-900">{acc.number}</span>
 					</div>
 					<button
-						class="btn btn-sm btn-outline whitespace-nowrap"
+						class="btn btn-sm whitespace-nowrap"
 						on:click={() => navigator.clipboard.writeText(acc.number)}
 					>
 						Copy <Copy class="my-2" size={16} />
@@ -36,11 +36,11 @@
 	</div>
 
 	{#if couple.gift_address}
-		<div class="glass mx-auto mt-6 w-full max-w-xl rounded p-4 text-center">
+		<div class="glass mx-auto mt-6 w-full max-w-xl rounded p-4 text-center shadow-lg">
 			<span class="font-bold">Atau kirim ke alamat:</span>
 			<p class="my-4 text-center">{couple.gift_address}</p>
 			<button
-				class="btn btn-sm btn-outline my-4 py-4 whitespace-nowrap"
+				class="btn btn-accent btn-accent-content my-2 py-2 whitespace-nowrap"
 				on:click={() => navigator.clipboard.writeText(couple.gift_address)}
 			>
 				Copy

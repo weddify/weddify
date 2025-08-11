@@ -5,9 +5,9 @@ import { supabase } from '$lib/db/supabase';
 
 export const load: PageServerLoad = async ({ params, url }) => {
 	const { slug } = params;
-
-	// cek juga custom domain jika ada
 	const host = url.host;
+	const protocol = url.protocol; // http: atau https:
+
 	let query = supabase.from('couples').select('*');
 
 	if (host === 'localhost:5173' || host.endsWith('.vercel.app')) {
@@ -22,5 +22,13 @@ export const load: PageServerLoad = async ({ params, url }) => {
 		throw error(404, 'Undangan tidak ditemukan');
 	}
 
-	return { couple };
+	// Bangun canonical URL
+	const base = couple.custom_domain
+		? `${protocol}//${couple.custom_domain}`
+		: `${protocol}//${host}`;
+	const canonicalUrl = couple.custom_domain
+		? `https://${couple.custom_domain}` // root only
+		: `https://${host}/${slug}`; // vercel + slug
+
+	return { couple, canonicalUrl };
 };

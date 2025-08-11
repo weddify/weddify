@@ -13,23 +13,21 @@
 		pada :
 	</p>
 
-	<div class="mb-6 flex flex-col justify-center gap-8">
+	<div class="my-8 flex flex-col justify-center gap-8">
 		<!-- Tanggal dan Waktu Ijab -->
 		{#if couple.ijab_date}
-			<div
-				class="bg-base-100 text-base-content mb-6 flex-1 rounded p-4 text-center shadow-sm md:mb-0"
-			>
+			<div class="bg-base-100 text-base-content flex-1 rounded p-4 text-center shadow-sm md:mb-0">
 				<h3 class="font-classic mb-3 text-center text-xl font-bold">Akad</h3>
 				<!-- Tanggal Ijab  -->
-				<div class=" gap-1">
+				<div class="gap-1">
 					<span class="text-lg">{formatDate(couple.ijab_date ?? '')}</span>
 				</div>
 				<!-- Waktu Ijab -->
-				<div class=" gap-1">
+				<div class="gap-1">
 					<span class="text-lg">{couple.ijab_time_range}</span>
 				</div>
 				<!-- Lokasi Ijab -->
-				<div class=" gap-1">
+				<div class="gap-1">
 					<span class="text-lg">{couple.ijab_location}</span>
 				</div>
 			</div>
