@@ -3,7 +3,7 @@
 </script>
 
 <section class="relative mx-auto flex w-full max-w-lg items-center px-6 py-12 text-center">
-	<div class="mx-auto grid max-w-lg grid-cols-1 gap-2 text-center md:grid-cols-2">
+	<div class="mx-auto grid max-w-lg grid-cols-1 gap-2 text-center">
 		<div
 			class="z-20 mx-auto w-60 rounded-t-full bg-rose-400/10 text-amber-950 ring-1 ring-rose-400/40 backdrop-blur-sm md:col-span-2"
 		>

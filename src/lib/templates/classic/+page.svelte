@@ -8,6 +8,7 @@
 	import GuestBook from './sections/GuestBook.svelte';
 	import GiftInfo from './sections/GiftInfo.svelte';
 	import Closing from './sections/Closing.svelte';
+	import Footer from './sections/Footer.svelte';
 
 	export let data; // dari +page.server.ts
 </script>
@@ -31,4 +32,5 @@
 
 <GuestBook couple={data.couple} />
 <GiftInfo couple={data.couple} />
-<Closing />
+<Closing couple={data.couple} />
+<Footer />

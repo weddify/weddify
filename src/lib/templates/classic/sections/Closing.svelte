@@ -1,20 +1,29 @@
 <script lang="ts">
-	import { Heart } from 'lucide-svelte';
+	export let couple;
 </script>
 
 <section
-	class=" bg-neutral text-base-200 relative mx-auto w-full max-w-lg items-center px-6 py-12 text-center text-base"
+	class="bg-base-200 relative mx-auto w-full max-w-lg items-center justify-center px-6 py-20 text-center text-base"
 >
-	<p class="text-sm">Terima kasih telah menggunakan Weddify</p>
-	<div class="text-sm">
-		Made with <Heart class="inline-block h-4 w-4" fill="red" /> by
-		<a
-			href="https://www.instagram.com/karsadigital"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="font-semibold hover:text-blue-500"
-		>
-			KarsaDigital
-		</a>
+	<div class="mx-auto max-w-lg grid-cols-1 gap-2 text-center">
+		<div class="flex flex-col items-center text-amber-950">
+			<img
+				src="https://static.vecteezy.com/system/resources/previews/004/328/836/large_2x/muslim-wedding-couple-illustration-free-vector.jpg"
+				alt="Foto mempelai pria"
+				class="my-4 h-70 w-40 rounded-full border-2 border-rose-200 object-cover object-top shadow ring-2 ring-rose-600"
+			/>
+		</div>
+		<div>
+			<span class="text-sm">
+				Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan
+				hadir dan memberikan doa restu. Atas kehadiran dan doa restunya kami mengucapkan terima
+				kasih.
+			</span>
+		</div>
+		<div class="my-10">
+			<span class="text-md font-thin"><i>Kami yang berbahagia</i></span>
+			<br />
+			<span class="font-classic text-lg font-bold"> {couple.groom_name} & {couple.bride_name}</span>
+		</div>
 	</div>
 </section>

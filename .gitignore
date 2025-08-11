@@ -17,13 +17,12 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.test
+node_modules/
+dist/
+
+struktur.txt
 
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-node_modules/
-dist/
-.env
-
-struktur.txt
