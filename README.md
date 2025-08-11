@@ -13,3 +13,4 @@ A simple wedding invitation web application.
 ## Description
 
 This is a simple web application for creating and sharing wedding invitations.
+s
