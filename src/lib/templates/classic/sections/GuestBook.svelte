@@ -114,7 +114,7 @@
 			{#if loading}
 				<span class="loading loading-spinner"></span> Mengirim...
 			{:else}
-				<p class="text-base-content text-sm">Kirim Ucapan</p>
+				Kirim Ucapan
 			{/if}
 		</button>
 	</form>
