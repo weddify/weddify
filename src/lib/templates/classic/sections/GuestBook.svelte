@@ -78,7 +78,7 @@
 	<p class="mb-6 text-sm">Berikan ucapan dan doa terbaik</p>
 
 	<form
-		class="card glass mx-auto mb-8 max-w-md space-y-4 p-6 shadow-xl dark:bg-gray-800"
+		class="card glass mx-auto mb-8 max-w-md space-y-4 p-6 shadow-lg"
 		on:submit|preventDefault={submitRsvp}
 	>
 		<h3 class="text-xl font-semibold">Kirim Ucapan</h3>
@@ -110,22 +110,17 @@
 			</span>
 		</div>
 
-		<button
-			type="submit"
-			class="btn btn-primary w-full"
-			disabled={loading || !guestName || !message}
-		>
+		<button type="submit" class="btn btn-primary w-36" disabled={loading || !guestName || !message}>
 			{#if loading}
 				<span class="loading loading-spinner"></span> Mengirim...
 			{:else}
-				Kirim Ucapan
+				<p class="text-base-content text-sm">Kirim Ucapan</p>
 			{/if}
 		</button>
 	</form>
 
-	<div class="glass mx-auto max-w-md rounded-lg p-6 shadow-2xl">
-		<h3 class="mb-4 text-xl font-semibold">Ucapan Tamu</h3>
-		<hr class="my-5 text-amber-500" />
+	<div class="glass mx-auto max-w-md rounded-lg p-4 shadow-lg">
+		<h3 class="mb-6 border-b border-dashed pb-4 text-xl font-semibold">Ucapan Tamu</h3>
 		{#if ucapans.length === 0}
 			<p class="text-gray-500">Belum ada ucapan.</p>
 		{:else}

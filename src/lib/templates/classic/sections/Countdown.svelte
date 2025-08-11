@@ -33,7 +33,7 @@
 
 {#if !finished}
 	<section
-		class="bg-base-200 relative mx-auto w-full max-w-lg items-center px-6 py-12 text-center text-base"
+		class="bg-base-100 relative mx-auto w-full max-w-lg items-center px-6 py-12 text-center text-base"
 		in:fade={{ duration: 800 }}
 	>
 		<h2 class="font-classic mb-6 text-center text-4xl">Save The Date</h2>
@@ -45,7 +45,7 @@
 			{#each [{ label: 'Hari', val: days }, { label: 'Jam', val: hours }, { label: 'Menit', val: mins }, { label: 'Detik', val: secs }] as item}
 				<div class="w-16 md:w-20">
 					<div
-						class="rounded-lg bg-rose-100 py-3 text-2xl font-bold tracking-wide text-rose-700 shadow-sm md:text-3xl"
+						class="bg-primary text-primary-content rounded-lg py-3 text-2xl font-bold tracking-wide shadow-sm md:text-3xl"
 					>
 						{item.val.toString().padStart(2, '0')}
 					</div>
