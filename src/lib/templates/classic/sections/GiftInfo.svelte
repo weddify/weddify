@@ -18,13 +18,11 @@
 		<div class="collapse-content text-sm">
 			{#each couple.bank_accounts ?? [] as acc}
 				<div
-					class="mx-auto mb-2 flex w-full max-w-xl items-center justify-between rounded bg-gray-100 p-3 dark:bg-gray-800"
+					class="mx-auto mb-2 flex w-full max-w-xl items-center justify-between rounded bg-gray-100 p-3"
 				>
 					<div class="flex flex-col">
-						<span class="text-lg font-medium text-gray-800 dark:text-gray-100"
-							>{acc.bank} a/n {acc.name}</span
-						>
-						<span class="text-base text-gray-900 dark:text-gray-200">{acc.number}</span>
+						<span class="text-lg font-medium text-gray-800">{acc.bank} a/n {acc.name}</span>
+						<span class="text-base text-gray-900">{acc.number}</span>
 					</div>
 					<button
 						class="btn btn-sm btn-outline whitespace-nowrap"
