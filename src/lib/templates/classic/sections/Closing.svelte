@@ -3,7 +3,7 @@
 </script>
 
 <section
-	class=" bg-neutral text-base-200 relative mx-auto w-full max-w-md items-center px-6 py-12 text-center text-base md:max-w-lg"
+	class=" bg-neutral text-base-200 relative mx-auto w-full max-w-lg items-center px-6 py-12 text-center text-base"
 >
 	<p class="text-sm">Terima kasih telah menggunakan Weddify</p>
 	<div class="text-sm">

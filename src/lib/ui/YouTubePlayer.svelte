@@ -36,9 +36,7 @@
 	}
 </script>
 
-<section
-	class="relative mx-auto flex w-full max-w-lg items-center bg-slate-500 px-6 py-12 text-center"
->
+<section class="relative mx-auto flex w-full max-w-lg items-center text-center">
 	<button
 		class="btn btn-circle btn-sm fixed right-6 bottom-6 z-50 max-w-md bg-rose-600 text-white md:right-[37.5%]"
 		on:click={toggle}

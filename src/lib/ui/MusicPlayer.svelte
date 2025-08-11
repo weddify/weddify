@@ -39,7 +39,7 @@
 	{/if}
 {:else}
 	<!-- Floating toggle untuk audio native -->
-	<section class="relative mx-auto h-1 w-full max-w-md items-center bg-slate-400 text-center">
+	<section class="relative mx-auto w-full max-w-md items-center text-center">
 		<button
 			class="btn btn-circle btn-sm fixed right-6 bottom-6 z-50 max-w-md bg-rose-600 text-white md:right-[37.5%]"
 			on:click={toggle}
