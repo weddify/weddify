@@ -110,7 +110,11 @@
 			</span>
 		</div>
 
-		<button type="submit" class="btn btn-primary w-36" disabled={loading || !guestName || !message}>
+		<button
+			type="submit"
+			class="btn btn-primary w-full"
+			disabled={loading || !guestName || !message}
+		>
 			{#if loading}
 				<span class="loading loading-spinner"></span> Mengirim...
 			{:else}
