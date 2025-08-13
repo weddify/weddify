@@ -41,15 +41,15 @@
 			Tidak ada yang spesial dalam cerita kami. Tapi kami sangat spesial untuk satu sama lain. Dan
 			Kami bersyukur, dipertemukan Allah di waktu terbaik, kini kami menanti hari istimewa kami.
 		</p>
-		<div class="flex justify-center gap-3 md:gap-6">
+		<div class="flex justify-center gap-5">
 			{#each [{ label: 'Hari', val: days }, { label: 'Jam', val: hours }, { label: 'Menit', val: mins }, { label: 'Detik', val: secs }] as item}
-				<div class="w-16 md:w-20">
+				<div class="glass w-16 rounded-md p-1 text-center shadow-md">
 					<div
-						class="bg-primary text-primary-content rounded-lg py-3 text-2xl font-bold tracking-wide shadow-sm md:text-3xl"
+						class="bg-primary text-primary-content rounded-md py-3 text-2xl font-bold tracking-wide shadow-sm"
 					>
 						{item.val.toString().padStart(2, '0')}
 					</div>
-					<div class="mt-2 text-xs font-semibold md:text-sm">{item.label}</div>
+					<div class="mt-2 text-xs font-semibold">{item.label}</div>
 				</div>
 			{/each}
 		</div>

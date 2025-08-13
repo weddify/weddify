@@ -2,7 +2,9 @@
 	export let couple;
 </script>
 
-<section class="relative mx-auto flex w-full max-w-lg items-center px-6 py-12 text-center">
+<section
+	class="bg-base-200 relative mx-auto flex w-full max-w-lg items-center px-6 py-12 text-center text-base"
+>
 	<div class="mx-auto grid max-w-lg grid-cols-1 gap-2 text-center">
 		<div
 			class="z-20 mx-auto w-60 rounded-t-full bg-rose-400/10 text-amber-950 ring-1 ring-rose-400/40 backdrop-blur-sm md:col-span-2"
@@ -49,12 +51,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	section {
-		background:
-			linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-			url('/16340656_v798-adj-28.jpg') no-repeat center center;
-		background-size: cover;
-	}
-</style>

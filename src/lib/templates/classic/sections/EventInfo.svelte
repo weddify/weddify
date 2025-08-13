@@ -25,6 +25,7 @@
 </script>
 
 <section
+	id="time"
 	class="bg-base-200 relative mx-auto w-full max-w-lg items-center px-6 py-12 text-center text-base"
 >
 	<h2 class="font-classic mb-6 text-center text-4xl">Acara</h2>

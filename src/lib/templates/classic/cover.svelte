@@ -5,6 +5,8 @@
 	export let receptionDate: string;
 	export let guestName: string;
 	export let onOpen: () => void;
+
+	import { indoDate } from '$lib/utils/date';
 </script>
 
 <section
@@ -13,7 +15,7 @@
 >
 	<div class="absolute inset-0 bg-black/40"></div>
 
-	<div class=" z-10 mb-2 text-4xl font-bold md:text-5xl">
+	<div class="z-10 my-10 mb-2 text-4xl font-bold md:text-5xl">
 		<h1>The wedding of</h1>
 	</div>
 
@@ -24,7 +26,7 @@
 			<div class="my-2 text-2xl md:text-3xl">&</div>
 			{brideName}
 		</h1>
-		<p class="mt-4 text-lg">{receptionDate}</p>
+		<p class="mt-4 text-lg">{indoDate(receptionDate)}</p>
 	</div>
 
 	<!-- Bagian Bawah: Nama Tamu dan Tombol -->

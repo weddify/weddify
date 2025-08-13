@@ -1,13 +1,14 @@
 /* src/app.css */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 
+/* 2️⃣ Import Tailwind */
 @import 'tailwindcss';
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
 	name: 'classic';
-	default: true;
-	prefersdark: true;
+	default: false;
+	prefersdark: false;
 	color-scheme: 'dark';
 	--color-base-100: oklch(91.637% 0.034 90.515);
 	--color-base-200: oklch(88.272% 0.049 91.774);
@@ -46,13 +47,6 @@
 	--font-family-modern: 'Inter', sans-serif;
 	--font-family-boho: 'Dancing Script', cursive;
 	/* Pewarnaan dasar */
-}
-:root {
-	--classic-bg-color: #f7f7f7; /* Warna latar belakang */
-	--classic-text-color: #333; /* Warna teks */
-	--classic-primary-color: #ff6347; /* Warna utama */
-	--classic-secondary-color: #4caf50; /* Warna sekunder */
-	--classic-accent-color: #2196f3; /* Warna aksen */
 }
 
 /* Hilangkan scrollbar tapi masih bisa scroll */

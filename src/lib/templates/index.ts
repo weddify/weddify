@@ -18,5 +18,5 @@ export const templateMap: Record<
 	{ Cover: new (...args: any) => SvelteComponent<CoverProps> }
 > = {
 	classic: { Cover: ClassicCover },
-	modern: { Cover: ModernCover }
+	modern: { Cover: ModernCover },
 };

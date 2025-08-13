@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
 	let query = supabase.from('couples').select('*');
 
-	if (host === 'localhost:5173' || host.endsWith('.vercel.app')) {
+	if (host.startsWith('localhost:') || host.endsWith('.vercel.app')) {
 		query = query.eq('slug', slug);
 	} else {
 		query = query.eq('custom_domain', host);

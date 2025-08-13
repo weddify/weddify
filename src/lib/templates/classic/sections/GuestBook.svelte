@@ -81,7 +81,7 @@
 		class="card glass mx-auto mb-8 max-w-md space-y-4 p-6 shadow-lg"
 		on:submit|preventDefault={submitRsvp}
 	>
-		<h3 class="text-xl font-semibold">Kirim Ucapan</h3>
+		<h3 class="mb-6 border-b border-dashed pb-4 text-xl font-semibold">Kirim Ucapan</h3>
 
 		<input
 			type="text"
@@ -103,7 +103,7 @@
 				rows="4"
 				maxlength="300"
 				placeholder="Ucapan / Doa (maks. 300 karakter)"
-				class="textarea textarea-bordered w-full pr-12"
+				class="ilang textarea textarea-bordered w-full pr-12"
 			></textarea>
 			<span class="absolute right-3 bottom-3 text-xs" class:text-red-500={remaining < 30}>
 				{remaining}
@@ -135,7 +135,7 @@
 							<img
 								src="https://ui-avatars.com/api/?name={encodeURIComponent(
 									ucapan.guest_name
-								)}&background=random&color=fff&rounded=true&size=40"
+								)}&background=random&color=fff&rounded=true&size=30"
 								alt="Avatar"
 								class="w-10 rounded-full"
 							/>

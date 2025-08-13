@@ -1,25 +1,21 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { animate } from 'motion/mini';
-
 	import { page } from '$app/state';
 	import { templateMap } from '$lib/templates';
 	import type { PageData } from './$types';
 	import MusicPlayer from '$lib/ui/MusicPlayer.svelte';
 
 	export let data: PageData;
-	const { couple, canonicalUrl } = data;
 
 	let showCover = true;
-	const guestName = page.url.searchParams.get('guest') || 'Tamu Undangan';
+
+	const { couple, canonicalUrl } = data;
+	const guestName =
+		page.url.searchParams.get('guest') || page.url.searchParams.get('tamu') || 'Tamu Undangan';
 	const template = data.couple.template ?? 'classic';
 	const { Cover } = templateMap[template] ?? templateMap.classic;
 
-	// meta awal
-	// const title = data.couple.meta_title || `${data.couple.groom_name} & ${data.data.couple.bride_name}`;
-	// const desc  = data.couple.meta_description;
-
-	// Referensi ke elemen cover
 	let coverRef: HTMLElement;
 
 	function handleOpen() {
@@ -46,52 +42,56 @@
 </script>
 
 <svelte:head>
-	<!-- Basic -->
-	<title
-		>The Wedding of {data.couple.groom_name.split(' ')[0]} & {data.couple.bride_name.split(
-			' '
-		)[0]}</title
-	>
+	<!-- Basic SEO -->
+	<title>The Wedding of {data.couple.display_groom_name} & {data.couple.display_bride_name}</title>
 	<meta
 		name="description"
-		content="Undangan pernikahan {data.couple.groom_name} & {data.couple.bride_name}."
+		content="Undangan pernikahan {data.couple.display_groom_name} & {data.couple
+			.display_bride_name}."
 	/>
 	<meta
-		name="keywords"
-		content="wedding, invitation, {data.couple.bride_name}, {data.couple.bride_name}"
+		name="author"
+		content="{data.couple.display_groom_name} & {data.couple.display_bride_name}"
 	/>
-	<meta name="author" content="{data.couple.groom_name} & {data.couple.bride_name}" />
-	<meta name="robots" content="index,follow" />
+	<meta name="robots" content="index, follow" />
+	<link rel="canonical" href={canonicalUrl} />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:site_name" content="Weddify" />
 	<meta
 		property="og:title"
-		content="Wedding – {data.couple.groom_name.split(' ')[0]} & {data.couple.bride_name.split(
-			' '
-		)[0]}"
+		content="The Wedding of {data.couple.display_groom_name} & {data.couple.display_bride_name}"
 	/>
 	<meta
 		property="og:description"
-		content="Undangan pernikahan {data.couple.groom_name} & {data.couple.bride_name}."
+		content="Undangan pernikahan {data.couple.display_groom_name} & {data.couple
+			.display_bride_name}."
 	/>
 	<meta property="og:image" content="https://weddify-three.vercel.app/og-cover.jpg" />
+	<meta
+		property="og:image:alt"
+		content="The Wedding of {data.couple.display_groom_name} & {data.couple.display_bride_name}"
+	/>
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:url" content={canonicalUrl} />
 	<meta
 		name="twitter:title"
-		content="Wedding – {data.couple.groom_name.split(' ')[0]} & {data.couple.bride_name.split(
-			' '
-		)[0]}"
+		content="The Wedding of {data.couple.display_groom_name} & {data.couple.display_bride_name}"
 	/>
 	<meta
 		name="twitter:description"
-		content="Undangan pernikahan {data.couple.groom_name} & {data.couple.bride_name}."
+		content="Undangan pernikahan {data.couple.display_groom_name} & {data.couple
+			.display_bride_name}."
 	/>
 	<meta name="twitter:image" content="https://weddify-three.vercel.app/og-cover.jpg" />
+	<meta
+		name="twitter:image:alt"
+		content="The Wedding of {data.couple.display_groom_name} & {data.couple.display_bride_name}"
+	/>
 
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/favicon.png" />
@@ -110,8 +110,8 @@
 	>
 		<svelte:component
 			this={Cover}
-			groomName={data.couple.groom_name}
-			brideName={data.couple.bride_name}
+			groomName={data.couple.display_groom_name}
+			brideName={data.couple.display_bride_name}
 			receptionDate={data.couple.resepsi_date ?? ''}
 			{guestName}
 			onOpen={handleOpen}
