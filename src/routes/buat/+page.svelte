@@ -74,7 +74,7 @@
 			loading = false;
 		} else {
 			// redirect ke halaman bayar Pakasir
-			const payUrl = `https://app.pakasir.com/pay/weddify/${amount}?order_id=${orderId}&qris_only=1&redirect=${redirectUrl}`;
+			const payUrl = `https://app.pakasir.com/pay/weddify/${amount}?order_id=${orderId}&redirect=${redirectUrl}`;
 			window.location.href = payUrl;
 		}
 	}
