@@ -4,7 +4,7 @@
 	export let greeting = '';
 	export let music_url = '';
 	export let quotes_json: any = null;
-	export let paket: 'basic' | 'premium' = 'basic';
+	export let paket: 'basic' | 'premium' | 'reseller' = 'basic';
 
 	export let gift_address = '';
 	export let template: 'classic' | 'modern' = 'classic';
@@ -35,7 +35,7 @@
 </script>
 
 <!-- Mark-up sudah rapi & responsif -->
-<main class="min-h-screen bg-gray-100 p-8">
+<main class=" p-4">
 	<div class="mx-auto max-w-3xl rounded-lg bg-white p-6 shadow-md">
 		<h1 class="mb-6 text-center text-2xl font-bold">Form Pengaturan Undangan Digital</h1>
 
@@ -73,65 +73,60 @@
 				<label class="form-control">
 					<span class="label-text">Paket</span>
 					<select bind:value={paket} class="select select-bordered">
-						<option value="basic">Basic (Gratis)</option>
-						<option value="premium">Premium (Rp 149.000)</option>
+						<option value="basic">Basic (12.000)</option>
+						<option value="premium">Premium (Rp 30.000)</option>
+						<option value="reseller">Reseller (Rp 70.000)</option>
 					</select>
 				</label>
 			</div>
 
 			<!-- Bagian rekening -->
-			<section class="mt-6">
-				<h2 class="mb-2 text-xl font-bold">Rekening Bank</h2>
-				<p class="mb-4 text-sm text-gray-500">Tambahkan hingga 10 rekening bank.</p>
+			<section class="mt-6 max-h-72 space-y-4 overflow-y-auto">
+				<h2 class="text-xl font-bold">Rekening Bank</h2>
+				<p class="mb-2 text-sm text-gray-500">Tambahkan hingga 5 rekening bank.</p>
 
 				{#each bank_accounts as account, index (index)}
-					<div class="relative mb-4 rounded-md border border-gray-200 bg-gray-50 p-4">
-						<h3 class="mb-2 text-lg font-semibold">Rekening #{index + 1}</h3>
+					<div
+						class="bg-base-100 relative rounded-xl border border-gray-200 p-5 shadow-sm transition hover:shadow-md"
+					>
+						<h3 class="mb-3 text-lg font-semibold text-gray-700">Rekening #{index + 1}</h3>
 
 						{#if bank_accounts.length > 1}
 							<button
 								type="button"
 								on:click={() => removeBankAccount(index)}
-								class="absolute top-2 right-2 text-gray-500 transition hover:text-red-600"
+								class="btn btn-xs btn-circle absolute top-3 right-3 text-gray-500 transition hover:bg-red-100 hover:text-red-600"
 								aria-label="Hapus"
 							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-5 w-5"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M6 18L18 6M6 6l12 12"
-									/>
-								</svg>
+								✕
 							</button>
 						{/if}
 
-						<div class="space-y-3">
+						<div class="space-y-4">
 							<label class="form-control">
-								<span class="label-text">Nama Bank</span>
-								<input bind:value={account.bank} required class="input input-bordered" />
+								<span class="label-text font-medium">Nama Bank</span>
+								<input bind:value={account.bank} required class="input input-bordered w-full" />
 							</label>
 
 							<label class="form-control">
-								<span class="label-text">Nama Pemilik</span>
-								<input bind:value={account.name} required class="input input-bordered" />
+								<span class="label-text font-medium">Nama Pemilik</span>
+								<input bind:value={account.name} required class="input input-bordered w-full" />
 							</label>
 
 							<label class="form-control">
-								<span class="label-text">Nomor Rekening</span>
-								<input bind:value={account.number} required class="input input-bordered" />
+								<span class="label-text font-medium">Nomor Rekening</span>
+								<input bind:value={account.number} required class="input input-bordered w-full" />
 							</label>
 						</div>
 					</div>
 				{/each}
 
-				<button type="button" on:click={addBankAccount} class="btn btn-outline btn-primary w-full">
+				<button
+					type="button"
+					on:click={addBankAccount}
+					disabled={bank_accounts.length >= 5}
+					class="btn btn-outline btn-primary mt-2 w-full"
+				>
 					+ Tambah Rekening Lain
 				</button>
 			</section>

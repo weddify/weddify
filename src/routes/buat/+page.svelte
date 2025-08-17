@@ -1,7 +1,11 @@
 <script lang="ts">
+	import { paketPrices } from '$lib/config';
+	import { page } from '$app/stores';
+
 	import Step1 from './Step1.svelte';
 	import Step2 from './Step2.svelte';
 	import Step3 from './Step3.svelte';
+	import Step4 from './Step4.svelte';
 	import { supabase } from '$lib/db/supabase'; // Ensure this import is correct
 	import { goto } from '$app/navigation';
 
@@ -40,14 +44,14 @@
 	let loading = false;
 
 	// Handlers
-	const next = () => step < 3 && step++;
+	const next = () => step < 4 && step++;
 	const prev = () => step > 1 && step--;
 
 	async function submitOrder() {
 		loading = true;
-		const amount = paket === 'premium' ? 149000 : 12000; // Harga paket basic diatur menjadi 12000
+		const amount = paket === 'basic' ? 12000 : paket === 'premium' ? 149000 : 299000;
 		const orderId = `w3-${slug}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-		const redirectUrl = `https://weddify-three.vercel.app/${slug}`;
+		const redirectUrl = `${$page.url.origin}/${slug}`;
 
 		const payload = {
 			slug,
@@ -78,7 +82,7 @@
 			bank_accounts,
 			template,
 			pakasir_order_id: orderId,
-			payment_status: amount === 12000 ? 'paid' : 'pending', // Set payment_status based on amount
+			payment_status: 'pending', // Set payment_status to 'pending'
 		};
 
 		const { error } = await supabase.from('couples').insert(payload as any);
@@ -88,23 +92,46 @@
 			return;
 		}
 
-		if (amount === 12000) {
-			goto(`/${slug}`);
-		} else {
+		if (amount > 0) {
 			const payUrl = `https://app.pakasir.com/pay/weddify/${amount}?order_id=${orderId}&redirect=${encodeURIComponent(redirectUrl)}`;
 			window.location.href = payUrl;
+		} else {
+			goto(`/${slug}`);
 		}
 	}
+	/* ringkas data untuk preview */
+	$: preview = {
+		groom_name,
+		bride_name,
+		display_groom_name,
+		display_bride_name,
+		ijab_date,
+		ijab_time_range,
+		ijab_location,
+		resepsi_date,
+		resepsi_time_range,
+		resepsi_location,
+		quote,
+		greeting,
+		gift_address,
+		bank_accounts,
+		template,
+		paket,
+	};
+
+	/* harga */
+	$: amount = paket === 'premium' ? 149000 : 12000;
 </script>
 
 <svelte:head><title>Order Undangan</title></svelte:head>
 
-<main class="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-rose-100 py-10">
+<main class="h-dvh bg-gradient-to-r from-fuchsia-500 to-pink-500 object-center p-8">
 	<form on:submit|preventDefault={submitOrder} class="card glass mx-auto max-w-3xl p-6 md:p-8">
 		<ul class="steps mb-6 w-full">
-			<li class="step" class:step-primary={step >= 1}>Couple</li>
-			<li class="step" class:step-primary={step >= 2}>Event</li>
-			<li class="step" class:step-primary={step >= 3}>Tambahan & Bayar</li>
+			<li class="step" class:step-primary={step >= 1}>Data Mempelai</li>
+			<li class="step" class:step-primary={step >= 2}>Informasi Event</li>
+			<li class="step" class:step-primary={step >= 3}>Informasi Lainnya</li>
+			<li class="step" class:step-primary={step >= 4}>Review & Bayar</li>
 		</ul>
 
 		{#if step === 1}
@@ -149,18 +176,22 @@
 				bind:bank_accounts
 			/>
 		{/if}
+		{#if step === 4}
+			<Step4 data={preview} {amount} on:next={submitOrder} />{/if}
 
-		<div class="mt-6 flex justify-between">
-			<button type="button" class="btn btn-outline" disabled={step === 1} on:click={prev}
-				>Sebelumnya</button
-			>
-			{#if step < 3}
-				<button type="button" class="btn btn-primary" on:click={next}>Selanjutnya</button>
-			{:else}
-				<button type="submit" class="btn btn-success" disabled={loading}>
-					{loading ? 'Memproses...' : 'Buat Undangan'}
-				</button>
-			{/if}
+		<div class="mx-auto w-96">
+			<div class="mt-6 flex justify-between">
+				<button type="button" class="btn btn-outline" disabled={step === 1} on:click={prev}
+					>Sebelumnya</button
+				>
+				{#if step < 4}
+					<button type="button" class="btn btn-primary" on:click={next}>Selanjutnya</button>
+				{:else}
+					<button type="submit" class="btn btn-success" disabled={loading}>
+						{loading ? 'Memproses...' : 'Buat Undangan'}
+					</button>
+				{/if}
+			</div>
 		</div>
 	</form>
 </main>

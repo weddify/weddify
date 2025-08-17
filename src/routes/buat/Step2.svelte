@@ -22,48 +22,60 @@
 	}
 </script>
 
-<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-	<label class="form-control">
-		<span class="label-text">Tanggal Akad</span>
-		<input type="date" bind:value={ijab_date} class="input input-bordered" />
-	</label>
-	<label class="form-control">
-		<span class="label-text">Waktu Akad</span>
-		<input
-			type="text"
-			bind:value={ijab_time_range}
-			placeholder="09:00 - Selesai"
-			class="input input-bordered"
-		/>
-	</label>
-	<label class="form-control md:col-span-2">
-		<span class="label-text">Lokasi Akad</span>
-		<input bind:value={ijab_location} class="input input-bordered" on:input={handleTitleName} />
-	</label>
-	<label class="form-control">
-		<span class="label-text">Tanggal Resepsi</span>
-		<input type="date" bind:value={resepsi_date} class="input input-bordered" required />
-	</label>
-	<label class="form-control">
-		<span class="label-text">Waktu Resepsi</span>
-		<input
-			type="text"
-			bind:value={resepsi_time_range}
-			placeholder="19:00 - Selesai"
-			class="input input-bordered"
-		/>
-	</label>
-	<label class="form-control md:col-span-2">
-		<span class="label-text">Lokasi Resepsi</span>
-		<input
-			bind:value={resepsi_location}
-			class="input input-bordered"
-			required
-			on:input={handleTitleName}
-		/>
-	</label>
-	<label class="form-control md:col-span-2">
-		<span class="label-text">Link Google Maps</span>
-		<input bind:value={maps_url} class="input input-bordered" />
-	</label>
-</div>
+<section class="bg-base-200 flex flex-col rounded-xl p-6 shadow-md">
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+		<label class="form-control w-full">
+			<span class="label-text font-medium text-gray-700">Tanggal Akad</span>
+			<input type="date" bind:value={ijab_date} class="input input-bordered w-full" />
+		</label>
+
+		<label class="form-control w-full">
+			<span class="label-text font-medium text-gray-700">Waktu Akad</span>
+			<input
+				type="text"
+				bind:value={ijab_time_range}
+				placeholder="09:00 - Selesai"
+				class="input input-bordered w-full"
+			/>
+		</label>
+
+		<label class="form-control w-full md:col-span-2">
+			<span class="label-text font-medium text-gray-700">Lokasi Akad</span>
+			<input
+				bind:value={ijab_location}
+				class="input input-bordered w-full"
+				on:input={handleTitleName}
+			/>
+		</label>
+
+		<label class="form-control w-full">
+			<span class="label-text font-medium text-gray-700">Tanggal Resepsi</span>
+			<input type="date" bind:value={resepsi_date} class="input input-bordered w-full" required />
+		</label>
+
+		<label class="form-control w-full">
+			<span class="label-text font-medium text-gray-700">Waktu Resepsi</span>
+			<input
+				type="text"
+				bind:value={resepsi_time_range}
+				placeholder="19:00 - Selesai"
+				class="input input-bordered w-full"
+			/>
+		</label>
+
+		<label class="form-control w-full md:col-span-2">
+			<span class="label-text font-medium text-gray-700">Lokasi Resepsi</span>
+			<input
+				bind:value={resepsi_location}
+				class="input input-bordered w-full"
+				required
+				on:input={handleTitleName}
+			/>
+		</label>
+
+		<label class="form-control w-full md:col-span-2">
+			<span class="label-text font-medium text-gray-700">Link Google Maps</span>
+			<input bind:value={maps_url} class="input input-bordered w-full" />
+		</label>
+	</div>
+</section>

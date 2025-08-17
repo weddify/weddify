@@ -14,7 +14,7 @@
 	export let data; // dari +page.server.ts
 </script>
 
-<div data-theme="classic">
+<div data-theme="classic" class="bg-white">
 	<Opening couple={data.couple} />
 
 	{#if data.couple.groom_name}

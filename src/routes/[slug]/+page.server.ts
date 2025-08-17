@@ -1,5 +1,4 @@
-// src/routes/[slug]/+page.server.ts
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/db/supabase';
 
@@ -7,6 +6,10 @@ export const load: PageServerLoad = async ({ params, url }) => {
 	const { slug } = params;
 	const host = url.host;
 	const protocol = url.protocol; // http: atau https:
+
+	if (!slug) {
+		throw error(404, 'Slug tidak ditemukan');
+	}
 
 	let query = supabase.from('couples').select('*');
 
@@ -20,6 +23,11 @@ export const load: PageServerLoad = async ({ params, url }) => {
 
 	if (dbError || !couple) {
 		throw error(404, 'Undangan tidak ditemukan');
+	}
+
+	if (couple.payment_status !== 'paid') {
+		// Redirect ke halaman pembayaran
+		throw redirect(302, `/bayar/${slug}`);
 	}
 
 	// Bangun canonical URL
