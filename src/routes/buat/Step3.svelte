@@ -37,8 +37,6 @@
 <!-- Mark-up sudah rapi & responsif -->
 <main class=" p-4">
 	<div class="mx-auto max-w-3xl rounded-lg bg-white p-6 shadow-md">
-		<h1 class="mb-6 text-center text-2xl font-bold">Form Pengaturan Undangan Digital</h1>
-
 		<form on:submit|preventDefault>
 			<!-- Grid 2 kolom di desktop -->
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -115,7 +113,12 @@
 
 							<label class="form-control">
 								<span class="label-text font-medium">Nomor Rekening</span>
-								<input bind:value={account.number} required class="input input-bordered w-full" />
+								<input
+									bind:value={account.number}
+									type="number"
+									required
+									class="input input-bordered w-full"
+								/>
 							</label>
 						</div>
 					</div>
