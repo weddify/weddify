@@ -8,7 +8,7 @@
 </script>
 
 <main>
-	<div class="mx-auto max-w-8/12">
+	<div class="mx-auto max-w-lg md:max-w-9/12">
 		<Navbar />
 		<Hero />
 		<About />

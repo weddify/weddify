@@ -1,8 +1,8 @@
 <section
 	id="home"
-	class="flex min-h-screen items-center justify-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200 px-4 py-10"
+	class="mx-auto flex h-dvh w-full max-w-lg items-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200"
 >
-	<div class="mx-auto w-full max-w-sm space-y-8 text-center md:max-w-2xl">
+	<div class=" space-y-8 text-center">
 		<!-- Heading -->
 		<h1 class="text-4xl font-extrabold text-rose-700 drop-shadow-lg sm:text-5xl md:text-6xl">
 			Weddify<span class="text-pink-500">.</span>
