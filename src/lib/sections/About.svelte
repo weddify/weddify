@@ -1,6 +1,6 @@
 <section
 	id="about"
-	class="mx-auto flex h-dvh w-full max-w-lg flex-col content-center justify-center bg-rose-800 md:max-w-none lg:w-10/12"
+	class="mx-auto flex h-dvh w-full max-w-lg flex-col content-center justify-center bg-rose-300 md:max-w-none lg:w-10/12"
 >
 	<div class="mt-25 grid-cols-1 space-y-8 px-16 text-center">
 		<h2 class="text-4xl font-bold text-rose-700">Tentang Kami</h2>
