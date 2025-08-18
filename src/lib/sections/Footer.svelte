@@ -1,4 +1,6 @@
-<footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+<footer
+	class="footer sm:footer-horizontal mx-auto max-w-lg bg-rose-300 p-12 md:max-w-none lg:w-10/12"
+>
 	<aside>
 		<svg
 			width="50"
@@ -20,23 +22,23 @@
 		</p>
 	</aside>
 	<nav>
-		<h6 class="footer-title">Services</h6>
-		<a href="#" class="link link-hover">Branding</a>
-		<a href="#" class="link link-hover">Design</a>
-		<a href="#" class="link link-hover">Marketing</a>
-		<a href="#" class="link link-hover">Advertisement</a>
+		<h6 class="footer-title">Links</h6>
+		<a href="/" class="link link-hover">Blog</a>
+		<a href="/" class="link link-hover">Works</a>
+		<a href="/" class="link link-hover">Marketing</a>
+		<a href="/" class="link link-hover">Advertisement</a>
 	</nav>
 	<nav>
 		<h6 class="footer-title">Company</h6>
-		<a href="#" class="link link-hover">About us</a>
-		<a href="#" class="link link-hover">Contact</a>
-		<a href="#" class="link link-hover">Jobs</a>
-		<a href="#" class="link link-hover">Press kit</a>
+		<a href="/" class="link link-hover">About us</a>
+		<a href="/" class="link link-hover">Contact</a>
+		<a href="/" class="link link-hover">Jobs</a>
+		<a href="/" class="link link-hover">Press kit</a>
 	</nav>
 	<nav>
 		<h6 class="footer-title">Legal</h6>
-		<a href="#" class="link link-hover">Terms of use</a>
-		<a href="#" class="link link-hover">Privacy policy</a>
-		<a href="#" class="link link-hover">Cookie policy</a>
+		<a href="/" class="link link-hover">Terms of use</a>
+		<a href="/" class="link link-hover">Privacy policy</a>
+		<a href="/" class="link link-hover">Cookie policy</a>
 	</nav>
 </footer>

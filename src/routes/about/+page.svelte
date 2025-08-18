@@ -2,7 +2,9 @@
 	<title>Tentang Kami | Weddify</title>
 </svelte:head>
 
-<main class="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-rose-200 p-8">
+<main
+	class="mx-auto flex h-dvh w-full max-w-lg items-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200"
+>
 	<div class="mx-auto max-w-3xl space-y-8 text-center">
 		<h1 class="text-4xl font-bold text-rose-700">Tentang Weddify</h1>
 

@@ -2,11 +2,14 @@
 	import { page } from '$app/stores';
 </script>
 
-<section id="features" class=" h-dvh bg-white px-6 py-16">
-	<div class="mx-auto mt-5 max-w-5xl space-y-10 text-center">
+<section
+	id="features"
+	class="mx-auto flex w-full max-w-lg flex-col content-center justify-center bg-rose-300 py-20 md:max-w-none lg:w-10/12"
+>
+	<div class=" mt-5 grid-cols-1 space-y-8 px-16 text-center">
 		<h2 class="text-3xl font-bold text-rose-700 md:text-4xl">Fitur Unggulan</h2>
 
-		<div class="grid gap-8 md:grid-cols-3">
+		<div class="grid grid-cols-2 gap-8 md:grid-cols-3">
 			<!-- 1. Wizard 4 Langkah -->
 			<div class="card bg-rose-50 p-6 shadow-lg">
 				<div class="mb-4 text-4xl">⚡</div>
@@ -49,9 +52,9 @@
 			<!-- 6. Reseller & Kolaborasi -->
 			<div class="card bg-rose-50 p-6 shadow-lg">
 				<div class="mb-4 text-4xl">🤝</div>
-				<h3 class="mb-2 text-lg font-bold">Reseller & Kolaborasi</h3>
+				<h3 class="mb-2 text-lg font-bold">Reseller</h3>
 				<p class="text-sm text-rose-600">
-					Buat undangan untuk orang lain, dapat komisi otomatis. <br />
+					Buat undangan untuk orang lain, dapat komisi. <br />
 					<span class="text-[18px]"><i><strong>(Coming soon)</strong></i></span>
 				</p>
 			</div>

@@ -3,7 +3,7 @@
 </script>
 
 <section
-	class="bg-base-200 relative mx-auto w-full max-w-lg items-center justify-center px-6 py-20 text-center text-base"
+	class="mx-auto flex h-dvh w-full max-w-lg items-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200"
 >
 	<div class="mx-auto max-w-lg grid-cols-1 gap-2 text-center">
 		<div class="flex flex-col items-center text-amber-950">
