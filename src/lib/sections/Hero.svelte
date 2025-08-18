@@ -1,6 +1,6 @@
 <section
 	id="home"
-	class=" flex h-dvh items-center justify-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200 px-6 py-12"
+	class=" flex h-dvh max-w-lg items-center justify-center bg-gradient-to-br from-rose-100 via-pink-100 to-rose-200 px-6 py-12"
 >
 	<div class="mx-auto mt-5 max-w-5xl space-y-10 text-center">
 		<!-- Heading -->
