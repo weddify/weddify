@@ -3,41 +3,28 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.session) throw error(401, 'Login required');
-	const { data } = await locals.supabase
+
+	// validasi user autentik
+	const { data: user, error: authErr } = await locals.supabase.auth.getUser();
+	if (authErr || !user) throw error(401, 'Invalid session');
+
+	// cek / buat profil (menggunakan session.user)
+	const { data: profile } = await locals.supabase
+		.from('profiles')
+		.select('*')
+		.eq('user_id', user.id)
+		.single();
+
+	if (!profile) {
+		await locals.supabase
+			.from('profiles')
+			.insert({ user_id: user.id, full_name: locals.session.user.email });
+	}
+
+	const { data: couples } = await locals.supabase
 		.from('couples')
 		.select('*')
 		.eq('user_id', locals.session.user.id);
-	return { couples: data ?? [] };
-};
 
-// ⬇️ letak action create + logout
-export const actions: Actions = {
-	create: async ({ request, locals }) => {
-		// di load function
-		if (!locals.session) throw error(401);
-
-		// cek apakah profil sudah ada
-		const { data: profile } = await locals.supabase
-			.from('profiles')
-			.select('*')
-			.eq('user_id', locals.session.user.id)
-			.single();
-
-		const { data: user, error: userErr } = await locals.supabase.auth.getUser();
-		if (userErr || !user) throw error(401, 'Invalid session');
-
-		if (!profile) {
-			// insert otomatis (nama default dulu)
-			await locals.supabase
-				.from('profiles')
-				.insert({ user_id: user.user.id, full_name: locals.session.user.email });
-		}
-
-		throw redirect(303, '/dashboard');
-	},
-
-	logout: async ({ locals }) => {
-		await locals.supabase.auth.signOut();
-		throw redirect(303, '/login');
-	},
+	return { couples: couples ?? [] };
 };
