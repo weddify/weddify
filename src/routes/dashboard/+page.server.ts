@@ -23,11 +23,14 @@ export const actions: Actions = {
 			.eq('user_id', locals.session.user.id)
 			.single();
 
+		const { data: user, error: userErr } = await locals.supabase.auth.getUser();
+		if (userErr || !user) throw error(401, 'Invalid session');
+
 		if (!profile) {
 			// insert otomatis (nama default dulu)
 			await locals.supabase
 				.from('profiles')
-				.insert({ user_id: locals.session.user.id, full_name: locals.session.user.email });
+				.insert({ user_id: user.user.id, full_name: locals.session.user.email });
 		}
 
 		throw redirect(303, '/dashboard');
