@@ -1,17 +1,26 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { createClient } from '@supabase/supabase-js';
+import { VITE_SUPABASE_ANON_KEY, VITE_SUPABASE_URL } from '$env/static/private';
+
+const supabase = createClient(VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY);
 
 export const load: PageServerLoad = async ({ url }) => {
-	const type = url.searchParams.get('type');
 	const token_hash = url.searchParams.get('token_hash');
+	const type = url.searchParams.get('type');
 
-	console.log('Token hash:', token_hash);
-	console.log('Type:', type);
+	if (token_hash && type === 'signup') {
+		// Tukar token_hash jadi session aktif
+		const { data, error } = await supabase.auth.exchangeCodeForSession(token_hash);
 
-	// Supabase v2: verifikasi sudah otomatis dilakukan via magic link
-	if (type === 'email_confirm' && token_hash) {
-		// Di titik ini, email sudah diverifikasi oleh Supabase
-		// Kamu tinggal redirect ke halaman yang kamu mau
+		if (error) {
+			console.error('Error exchanging code for session:', error);
+			throw redirect(303, '/login');
+		}
+
+		console.log('Session:', data.session);
+
+		// ✅ Setelah sukses → redirect bersih tanpa access_token di URL
 		throw redirect(303, '/dashboard');
 	}
 
