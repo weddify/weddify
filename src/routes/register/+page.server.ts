@@ -27,6 +27,6 @@ export const actions: Actions = {
 		if (profileError) return fail(500, { error: profileError.message });
 
 		// 3. redirect
-		throw redirect(303, '/dashboard');
+		throw redirect(303, '/login');
 	},
 };

@@ -13,18 +13,22 @@ export const load: PageServerLoad = async ({ locals }) => {
 // ⬇️ letak action create + logout
 export const actions: Actions = {
 	create: async ({ request, locals }) => {
+		// di load function
 		if (!locals.session) throw error(401);
 
-		const form = await request.formData();
-		const name = form.get('name') as string;
-		if (!name) return fail(400, { name, missing: true });
+		// cek apakah profil sudah ada
+		const { data: profile } = await locals.supabase
+			.from('profiles')
+			.select('*')
+			.eq('user_id', locals.session.user.id)
+			.single();
 
-		await locals.supabase.from('couples').insert({
-			bride_name: name,
-			groom_name: 'Belum diisi',
-			slug: crypto.randomUUID().slice(0, 8),
-			user_id: locals.session.user.id,
-		});
+		if (!profile) {
+			// insert otomatis (nama default dulu)
+			await locals.supabase
+				.from('profiles')
+				.insert({ user_id: locals.session.user.id, full_name: locals.session.user.email });
+		}
 
 		throw redirect(303, '/dashboard');
 	},
