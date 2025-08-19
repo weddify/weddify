@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TurnsTile from '$lib/ui/TurnsTile.svelte';
+	// import TurnsTile from '$lib/ui/TurnsTile.svelte';
 </script>
 
 <div class="bg-base-200 flex min-h-screen items-center justify-center p-4">
@@ -53,7 +53,7 @@
 					class="input input-bordered w-full"
 				/>
 			</div>
-			<TurnsTile />
+			<!-- <TurnsTile /> -->
 			<button type="submit" class="btn btn-primary mt-4 w-full"> Daftar </button>
 		</form>
 
