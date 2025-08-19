@@ -1,43 +1,32 @@
 import { redirect, fail } from '@sveltejs/kit';
-// import { checkTurnstile } from '$lib/utils/turnstile';
+import { createClient } from '@supabase/supabase-js';
+import { VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE } from '$env/static/private';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
-	default: async ({ request, locals }) => {
+	default: async ({ request }) => {
 		const fd = await request.formData();
-
-		// 1. captcha
-		// const ok = await checkTurnstile(fd);
-		// if (!ok) return fail(400, { error: 'Captcha gagal' });
-
-		// 2. ambil data
 		const fullName = fd.get('fullName') as string;
 		const email = fd.get('email') as string;
 		const password = fd.get('password') as string;
 
-		// 3. sign-up di Auth
-		const { data: authData, error: signUpError } = await locals.supabase.auth.signUp({
-			email,
-			password,
+		// Supabase admin (bypass RLS)
+		const supAdmin = createClient(VITE_SUPABASE_URL, SUPABASE_SERVICE_ROLE, {
+			auth: { persistSession: false },
 		});
 
-		if (signUpError) {
-			console.log('Supabase signUp error:', signUpError);
-			return fail(400, { error: signUpError.message });
-		}
-		if (!authData.user) return fail(500, { error: 'Tidak ada user' });
+		// 1. sign-up
+		const { data: authData, error: signUpError } = await supAdmin.auth.signUp({ email, password });
+		if (signUpError) return fail(400, { error: signUpError.message });
 
-		// 4. insert ke public.profiles (opsional)
-		await new Promise((r) => setTimeout(r, 1000));
-		const { error: profileError } = await locals.supabase
+		// 2. insert profil
+		const { error: profileError } = await supAdmin
 			.from('profiles')
-			.insert({ user_id: authData.user.id, full_name: fullName });
+			.insert({ user_id: authData.user!.id, full_name: fullName });
 
-		if (profileError) {
-			console.log('Insert profile error:', profileError);
-		}
-		console.log('Insert profile result:', { user_id: authData.user.id, full_name: fullName });
-		// 5. langsung masuk
+		if (profileError) return fail(500, { error: profileError.message });
+
+		// 3. redirect
 		throw redirect(303, '/dashboard');
 	},
 };
