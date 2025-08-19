@@ -22,6 +22,6 @@ export const actions: Actions = {
 		await supAdmin.from('profiles').insert({ user_id: authData.user!.id, full_name: fullName });
 
 		// 3. langsung redirect
-		throw redirect(303, '/dashboard');
+		throw redirect(303, '/login');
 	},
 };
