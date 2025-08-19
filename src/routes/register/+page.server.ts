@@ -1,5 +1,5 @@
 import { redirect, fail } from '@sveltejs/kit';
-import { checkTurnstile } from '$lib/utils/turnstile';
+// import { checkTurnstile } from '$lib/utils/turnstile';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -7,8 +7,8 @@ export const actions: Actions = {
 		const fd = await request.formData();
 
 		// 1. captcha
-		const ok = await checkTurnstile(fd);
-		if (!ok) return fail(400, { error: 'Captcha gagal' });
+		// const ok = await checkTurnstile(fd);
+		// if (!ok) return fail(400, { error: 'Captcha gagal' });
 
 		// 2. ambil data
 		const fullName = fd.get('fullName') as string;
