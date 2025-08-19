@@ -28,10 +28,14 @@ export const actions: Actions = {
 		if (!authData.user) return fail(500, { error: 'Tidak ada user' });
 
 		// 4. insert ke public.profiles (opsional)
-		await locals.supabase.from('profiles').insert({
-			user_id: authData.user.id,
-			full_name: fullName,
-		});
+		await new Promise((r) => setTimeout(r, 1000));
+		const { error: profileError } = await locals.supabase
+			.from('profiles')
+			.insert({ user_id: authData.user.id, full_name: fullName });
+
+		if (profileError) {
+			console.log('Insert profile error:', profileError);
+		}
 
 		// 5. langsung masuk
 		throw redirect(303, '/dashboard');
