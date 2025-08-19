@@ -21,7 +21,10 @@ export const actions: Actions = {
 			password,
 		});
 
-		if (signUpError) return fail(400, { error: signUpError.message });
+		if (signUpError) {
+			console.log('Supabase signUp error:', signUpError);
+			return fail(400, { error: signUpError.message });
+		}
 		if (!authData.user) return fail(500, { error: 'Tidak ada user' });
 
 		// 4. insert ke public.profiles (opsional)

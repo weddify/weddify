@@ -49,6 +49,7 @@
 					type="password"
 					required
 					minlength="6"
+					autocomplete="new-password"
 					placeholder="Minimal 6 karakter"
 					class="input input-bordered w-full"
 				/>
