@@ -36,7 +36,7 @@ export const actions: Actions = {
 		if (profileError) {
 			console.log('Insert profile error:', profileError);
 		}
-
+		console.log('Insert profile result:', { user_id: authData.user.id, full_name: fullName });
 		// 5. langsung masuk
 		throw redirect(303, '/dashboard');
 	},
