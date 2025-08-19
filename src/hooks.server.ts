@@ -1,4 +1,3 @@
-// src/hooks.server.ts
 import { createServerClient } from '@supabase/ssr';
 import type { Handle } from '@sveltejs/kit';
 import { VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY } from '$env/static/private';
@@ -14,5 +13,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	const { data } = await event.locals.supabase.auth.getSession();
 	event.locals.session = data.session;
+
 	return resolve(event);
 };

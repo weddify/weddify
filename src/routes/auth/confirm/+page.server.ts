@@ -10,7 +10,6 @@ export const load: PageServerLoad = async ({ url }) => {
 	const type = url.searchParams.get('type');
 
 	if (token_hash && type === 'signup') {
-		// Tukar token_hash jadi session aktif
 		const { data, error } = await supabase.auth.exchangeCodeForSession(token_hash);
 
 		if (error) {
@@ -18,9 +17,7 @@ export const load: PageServerLoad = async ({ url }) => {
 			throw redirect(303, '/login');
 		}
 
-		console.log('Session:', data.session);
-
-		// ✅ Setelah sukses → redirect bersih tanpa access_token di URL
+		// Setelah sukses → langsung redirect dengan URL bersih
 		throw redirect(303, '/dashboard');
 	}
 
